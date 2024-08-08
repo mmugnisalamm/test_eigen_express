@@ -19,8 +19,8 @@ class MembersRepository {
         return __awaiter(this, void 0, void 0, function* () {
             const results = yield this.client.query("SELECT b.*, string_agg(c.title, ', ') books_name, sum(a.borrow_qty), a.borrow_start_date, a.borrow_due_date, a.borrow_back_date " +
                 "FROM  borrowed a " +
-                "RIGHT JOIN members b ON(a.members_id=b.id) " +
-                "LEFT JOIN books c ON(a.books_id=c.id) GROUP BY b.id, a.borrow_start_date, a.borrow_due_date, a.borrow_back_date ORDER BY b.id ASC");
+                "RIGHT JOIN members b ON(a.members_code=b.code) " +
+                "LEFT JOIN books c ON(a.books_code=c.code) GROUP BY b.id, a.borrow_start_date, a.borrow_due_date, a.borrow_back_date ORDER BY b.id ASC");
             return results.rows;
         });
     }

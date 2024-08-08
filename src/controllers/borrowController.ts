@@ -14,7 +14,7 @@ export class BorrowController {
 
       const data = await this.interactor.borrowBooks(body);
 
-      return res.status(200).json(data);
+      return res.status(data.status).json(data);
     } catch (error) {
       next(error);
     }

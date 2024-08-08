@@ -10,7 +10,7 @@ const controller = new MembersController(interactor);
 const router = express.Router();
 
 // router.post("/books", controller.onCreateBooks.bind(controller));
-router.get("/books", controller.onGetMembers.bind(controller));
+router.get("/members", controller.onGetMembers.bind(controller));
 // router.patch("/books", controller.onUpdateBooks.bind(controller));
 // router.delete("/books", controller.onDeleteBooks.bind(controller));
 

@@ -11,7 +11,10 @@ export class MembersRepository implements IMembersRepository {
   }
 
   async get(): Promise<Members[]> {
-    const results = await this.client.query("SELECT * FROM books WHERE stock <> 0");
+    const results = await this.client.query("SELECT b.*, string_agg(c.title, ', ') books_name, sum(a.borrow_qty), a.borrow_start_date, a.borrow_due_date, a.borrow_back_date "+
+      "FROM  borrowed a "+
+      "RIGHT JOIN members b ON(a.members_id=b.id) "+
+      "LEFT JOIN books c ON(a.books_id=c.id) GROUP BY b.id, a.borrow_start_date, a.borrow_due_date, a.borrow_back_date ORDER BY b.id ASC");
 
     return results.rows;
   }

@@ -3,6 +3,7 @@ import bodyParser from "body-parser";
 import cors from "cors";
 import booksRouter from "./routes/booksRoute";
 import membersRouter from "./routes/membersRoute";
+import borrowRouter from "./routes/borrowRoute";
 
 const app = express();
 
@@ -15,6 +16,7 @@ app.get("/", (req, res) => {
 
 app.use(booksRouter);
 app.use(membersRouter);
+app.use(borrowRouter);
 
 app.listen(8000, () => {
   console.log("Server is running on port 8000");
